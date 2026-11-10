@@ -17,6 +17,11 @@ class PaymentMethod(ABC):
     @abstractmethod
     def bayar(self, jumlah: float) -> str:
         """Prosess pembayaran, lalu kembali ID transaksi."""
+        
+    @abstractmethod
+    def biaya_admin(self, jumlah: float) -> float:
+        """Menghitung biaya administrasi pembayaran"""  
+        pass 
     
     def proses(self, jumlah: float) -> str:
         """Template method: urutan langkah di jaga oleh kelas induk."""

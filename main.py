@@ -33,11 +33,13 @@ daftar = [
     ConsoleNotifier(),
     EmailNotifier(),
     WhatsAppNotifier(),
+    TelegramNotifier(),
     TanpaKirim(),
 ]
 for n in daftar:
     cocok = isinstance(n, Notifier)
     print(f"{type(n).__name__:<16} memenuhi Notifier? {cocok}")
+    TelegramNotifier().kirim("08123456789", "Pengujian notifikasi Telegram")
     
 from core.notifiers import ConsoleNotifier, EmailNotifier
 from core.processor import PaymentProcessor
@@ -88,7 +90,10 @@ def main() -> None:
         pemroses.checkout(metode, jumlah, pelanggan="mahasiswa@utr.ac.id")
     print("-" * 60)
     print("Riwayat transaksi berhasil:")
-    for trx_id, nama, jumlah in pemroses.riwayat:
-        print(f"  {trx_id} | {nama} | {rupiah(jumlah)}")
+    for trx_id, nama, jumlah, biaya_admin, total in pemroses.riwayat:
+        print(f" {trx_id} | {nama} | "
+              f" jumlah: {rupiah(jumlah)} | "
+              f"Admin: {rupiah(biaya_admin)} | "
+              f"Total: {rupiah(total)}")
 if __name__ == "__main__":
     main()    

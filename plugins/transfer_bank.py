@@ -29,4 +29,7 @@ class TransferBank(PaymentMethod):
     
     def bayar(self, jumlah: float) -> str:
         self.saldo -= jumlah
-        return buat_id("TRF")    
+        return buat_id("TRF")   
+    
+    def biaya_admin(self, jumlah: float) -> float:
+        return 2500.0

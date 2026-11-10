@@ -17,3 +17,6 @@ class QRIS(PaymentMethod):
     def bayar(self, jumlah: float) -> str:
         ...  # TODO: kembalikan ID transaksi berawalan "QRS"
         return buat_id("QRS")
+    
+    def biaya_admin(self,jumlah: float) -> float:
+        return jumlah * 0.007
